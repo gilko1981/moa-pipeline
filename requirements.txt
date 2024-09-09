@@ -1,7 +1,9 @@
 openai
-fire
-loguru
-datasets
-typer
+# fire
+# loguru
+# datasets
+# typer
 python-dotenv
-gorq
+# gorq
+pandas
+requests
