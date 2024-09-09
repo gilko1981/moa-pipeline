@@ -40,7 +40,7 @@ class Pipeline:
 
         if body.get("title", False):
             print("Title Generation")
-            return "Wikipedia Pipeline"
+            return "CSV Pipeline"
         else:
             context = self.df.head(3)
 
