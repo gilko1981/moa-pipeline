@@ -42,7 +42,7 @@ class Pipeline:
             print("Title Generation")
             return "CSV Pipeline"
         else:
-            context = 'lala and baba'
+            context = '--------\n'.join([str(s) for s in (user_message, messages, body)])
             # context = self.df.head(3)
 
             return context if context else "No information found"
