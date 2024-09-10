@@ -4,9 +4,9 @@ from pydantic import BaseModel
 import requests
 import os
 import pandas as pd
-# from langchain_experimental.agents import create_pandas_dataframe_agent
+from langchain_experimental.agents import create_pandas_dataframe_agent
 # from langchain_anthropic import ChatAnthropic
-# from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 class Pipeline:
     class Valves(BaseModel):
@@ -24,7 +24,7 @@ class Pipeline:
         # self.df = pd.read_csv('/app/titanic.csv')
         self.df = pd.read_csv('/app/titanic.csv')
         # self.llm = ChatAnthropic(model="claude-3-5-sonnet-20240620", api_key=os.getenv('ANTHROPIC_API_KEY'))
-        # self.llm = ChatOpenAI(model="gpt-4o", temperature=0)
+        self.llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY", ""))
 
     async def on_startup(self):
         # This function is called when the server is started.
@@ -50,8 +50,8 @@ class Pipeline:
             # context = '--------\n'.join([str(s) for s in (user_message, messages, body)])
             # context = str(self.df.head(3))
     
-            # agent = create_pandas_dataframe_agent(self.llm, self.df, agent_type="openai-tools", verbose=True, allow_dangerous_code=True)
-            # context = agent.invoke({"input": user_message}).get('output', '')
+            agent = create_pandas_dataframe_agent(self.llm, self.df, agent_type="openai-tools", verbose=True, allow_dangerous_code=True)
+            context = agent.invoke({"input": user_message}).get('output', '')
             
 
         return context if context else "No information found"
