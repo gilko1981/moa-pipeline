@@ -1,12 +1,14 @@
 from typing import List, Union, Generator, Iterator
 from pydantic import BaseModel
-from schemas import OpenAIChatMessage
+# from schemas import OpenAIChatMessage
 import requests
 import os
 import pandas as pd
 from langchain_experimental.agents import create_pandas_dataframe_agent
 # from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
+
+os.environ['OPENAI_API_KEY'] = 'dummy_key'
 
 class Pipeline:
     class Valves(BaseModel):
@@ -21,8 +23,8 @@ class Pipeline:
         self.name = "csv_pipeline"
         # Initialize rate limits
         # self.valves = self.Valves(**{"OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "")})
+        self.df = pd.read_csv('data/titanic.csv')
         # self.df = pd.read_csv('/app/titanic.csv')
-        self.df = pd.read_csv('/app/titanic.csv')
         # self.llm = ChatAnthropic(model="claude-3-5-sonnet-20240620", api_key=os.getenv('ANTHROPIC_API_KEY'))
         self.llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY", ""))
 
@@ -57,6 +59,6 @@ class Pipeline:
         return context if context else "No information found"
 
 
-# if __name__ == '__main__':
-#     p = Pipeline()
-#     print(p.pipe("What's the strongest correlation between any of the headers to survivability in the data", 'id', [], {}))
+if __name__ == '__main__':
+    p = Pipeline()
+    print(p.pipe("What's the strongest correlation between any of the headers to survivability in the data", 'id', [], {}))
