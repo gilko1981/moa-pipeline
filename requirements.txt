@@ -7,3 +7,9 @@ python-dotenv
 # gorq
 pandas
 requests
+langchain
+langchain-openai
+langchain-community
+langchain-experimental
+langchain_anthropic
+tabulate
