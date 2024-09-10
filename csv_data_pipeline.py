@@ -1,6 +1,6 @@
 from typing import List, Union, Generator, Iterator
 from pydantic import BaseModel
-# from schemas import OpenAIChatMessage
+from schemas import OpenAIChatMessage
 import requests
 import os
 import pandas as pd
@@ -57,6 +57,6 @@ class Pipeline:
         return context if context else "No information found"
 
 
-if __name__ == '__main__':
-    p = Pipeline()
-    print(p.pipe("What's the strongest correlation between any of the headers to survivability in the data", 'id', [], {}))
+# if __name__ == '__main__':
+#     p = Pipeline()
+#     print(p.pipe("What's the strongest correlation between any of the headers to survivability in the data", 'id', [], {}))
