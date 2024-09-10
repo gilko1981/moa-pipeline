@@ -50,8 +50,8 @@ class Pipeline:
             # context = '--------\n'.join([str(s) for s in (user_message, messages, body)])
             # context = str(self.df.head(3))
     
-            agent = create_pandas_dataframe_agent(self.llm, self.df, agent_type="openai-tools", verbose=True, allow_dangerous_code=True)
-            context = agent.invoke({"input": user_message}).get('output', '')
+            # agent = create_pandas_dataframe_agent(self.llm, self.df, agent_type="openai-tools", verbose=True, allow_dangerous_code=True)
+            # context = agent.invoke({"input": user_message}).get('output', '')
             
 
         return context if context else "No information found"
