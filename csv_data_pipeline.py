@@ -43,7 +43,7 @@ class Pipeline:
             return "CSV Pipeline"
         else:
             # context = '--------\n'.join([str(s) for s in (user_message, messages, body)])
-            context = self.df.head(3)
+            context = str(self.df.head(3))
 
             return context if context else "No information found"
 
