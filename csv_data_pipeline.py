@@ -23,8 +23,8 @@ class Pipeline:
         self.name = "csv_pipeline"
         # Initialize rate limits
         # self.valves = self.Valves(**{"OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "")})
-        self.df = pd.read_csv('data/titanic.csv')
-        # self.df = pd.read_csv('/app/titanic.csv')
+        # self.df = pd.read_csv('data/titanic.csv')
+        self.df = pd.read_csv('/app/titanic.csv')
         # self.llm = ChatAnthropic(model="claude-3-5-sonnet-20240620", api_key=os.getenv('ANTHROPIC_API_KEY'))
         self.llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY", ""))
 
