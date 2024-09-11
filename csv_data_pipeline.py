@@ -8,7 +8,7 @@ from langchain_experimental.agents import create_pandas_dataframe_agent
 # from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
 
-os.environ['OPENAI_API_KEY'] = 'dummy_key'
+# os.environ['OPENAI_API_KEY'] = 'dummy_key'
 
 class Pipeline:
     class Valves(BaseModel):
